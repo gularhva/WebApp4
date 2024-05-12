@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using WebApp4.Configurations;
 using WebApp4.Entities;
+using WebApp4.Entities.Identities;
 
 namespace WebApp4.Contexts
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext : IdentityDbContext<AppUser, AppRole, string>
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {

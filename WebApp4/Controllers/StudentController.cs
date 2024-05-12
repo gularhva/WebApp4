@@ -14,25 +14,25 @@ namespace WebApp4.Controllers
         {
             _studentService = studentService;
         }
-        [HttpGet("GetAllStudents")]
+        [HttpGet("get_all_students")]
         public async Task<IActionResult> GetAllStudents()
         {
             var response =await _studentService.GetAllStudents();
             return StatusCode(response.StatusCode,response);
         }
-        [HttpGet("GetAllStudentsBySchoolId")]
+        [HttpGet("get_all_students_by_schoolid")]
         public async Task<IActionResult> GetAllStudentsBySchoolId(int id)
         {
             var response = await _studentService.GetAllStudentsBySchoolId(id);
             return StatusCode(response.StatusCode,response);
         }
-        [HttpGet("GetById")]
+        [HttpGet("get_by_id")]
         public async Task<IActionResult> GetById(int id)
         {
             var response = await _studentService.GetById(id);
             return StatusCode(response.StatusCode, response);
         }
-        [HttpPost("AddStudent")]
+        [HttpPost("add_student")]
         public async Task<IActionResult> AddStudent(StudentCreateDTO model)
         {
             var response = await _studentService.AddStudent(model);
@@ -44,19 +44,19 @@ namespace WebApp4.Controllers
             var response = await _studentService.DeleteStudent(id);
             return StatusCode(response.StatusCode, response);
         }
-        [HttpPut("UpdateStudent")]
+        [HttpPut("update_student")]
         public async Task<IActionResult> UpdateStudent(StudentUpdateDTO model)
         {
             var response = await _studentService.UpdateStudent(model);
             return StatusCode(response.StatusCode, response);
         }
-        [HttpPut("ChangeSchool")]
+        [HttpPut("change_school")]
         public async Task<IActionResult> ChangeSchool(ChangeSchoolDTO model)
         {
             var response = await _studentService.ChangeSchool(model);
             return StatusCode(response.StatusCode, response);
         }
-        [HttpPut("ChangeSchoolById")]
+        [HttpPut("change_school_by_id")]
         public async Task<IActionResult> ChangeSchool(int studentId, int newSchoolId)
         {
             var response = await _studentService.ChangeSchool(studentId,newSchoolId);

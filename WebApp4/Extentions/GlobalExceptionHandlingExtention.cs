@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
+using Serilog;
 using System.Net;
 using System.Text.Json;
 using WebApp4.Models;
@@ -19,7 +20,7 @@ public static class GlobalExceptionHandlingExtention
                 var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
                 if(contextFeature != null)
                 {
-                    //todo log yazacayiq!
+                    Log.Error($"Something went wrong:{contextFeature.Error}");
                     await context.Response.WriteAsync(JsonSerializer.Serialize(new ErrorDetails()
                     {
                         StatusCode = context.Response.StatusCode,
